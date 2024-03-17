@@ -1,0 +1,20 @@
+# volume > 300,000
+VolumeAvg("length" = 15)."Vol" is greater than 300000
+
+#price > 10
+and close > 10
+
+#SMA  10 > 20> 50> 200, price > 200SMA
+and DailySMA("length" = 10) is greater than or equal to DailySMA("length" = 20) 
+and DailySMA("length" = 20) is greater than or equal to DailySMA("length" = 50) 
+and DailySMA("length" = 50) is greater than or equal to DailySMA("length" = 200) 
+and close is greater than or equal to DailySMA("length" = 10) 
+
+# Bouncing off 10 SMA
+# and close is greater than DailySMA("length" = 10) and close is less than 1.03 * DailySMA("length" = 10) and close is greater than or equal to open and low is less than open and low is less than DailySMA("length" = 10)
+
+#closing near high logic
+and high is greater than close and (high-close)/close < 0.006 
+
+#bottoming tail logic
+#and close is greater than or equal to open and low is less than open and close is greater than 10 and open-low > (high-low)*0.3 
